@@ -1,0 +1,11 @@
+import socket
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+HOST_NAME=socket.gethostname()
+PORT=12345
+s.bind((HOST_NAME,PORT))
+s.listen(4)
+
+while True:
+    client,address=s.accept()
+    client.send(bytes("hello,how are you?","utf-8"))
+    print("Client is connected and has the address ",address)
